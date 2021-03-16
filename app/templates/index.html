@@ -1,0 +1,31 @@
+<%inherit file="menu.html"/>
+
+<%block name="h">
+    <title>Todo App</title>
+</%block>
+
+<%block name="b">
+    <h1>Todo List</h1>
+
+    <div>
+        <h2>Incomplete Items</h2>
+        <ul>
+            % for todo in incomplete:
+            <li style="font-size: 12pt" class='mark'>${ todo.text }<a href="${ url_for('complete', id=todo.id) }">Mark As Complete</a></li>
+            % endfor
+        </ul>
+        <h2>Completed Items</h2>
+        <ul>
+            % for todo in complete:
+            <li style="font-size: 12pt">${ todo.text }<a href="${ url_for('delete', id=todo.id) }">Remove Completed Item</a></li>
+            % endfor
+        </ul>
+    </div>
+    <div>
+        <h2>Add a new todo item:</h2>
+        <form action="${ url_for('add') }" method="POST">
+            <input type="text" name="todoitem">
+            <input type="submit" value="Add Item" class="button">
+        </form>
+    </div>
+</%block>

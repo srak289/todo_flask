@@ -1,0 +1,29 @@
+<%inherit file="base.html"/>
+
+<%block name="s">
+.menu.ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+.menu.li {
+    float: left;
+}
+.menu.li .menu.a {
+    display: block;
+    padding: 20px;
+    background-color: #e3e3e3;
+}
+.menu.li .menu.a:hover {
+    background-color: #450000;
+}
+</%block>
+
+<%block name="menu">
+    <ul class="menu ul">
+        % for k, v in pages.items():
+        <li class="menu li"><a class="menu a"href="${v}">${k}</a></li>
+        % endfor
+    </ul>
+</%block>
